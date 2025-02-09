@@ -44,12 +44,14 @@ public class Main
         }
         else if (userInput.equals("type"))
         {
-            System.out.println("type is a shell builtin");
+            System.out.println("type is a shell builtin");            
         }
         else
         {
             System.out.println(userInput + ": not found");
+            return;
         }
+        System.out.println(System.getenv(userInput));
     }
     public static void main(String[] args) throws Exception
     {
