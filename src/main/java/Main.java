@@ -1,4 +1,5 @@
 import java.util.Scanner;
+import java.nio.file.Path;
 
 public class Main
 {
@@ -20,13 +21,17 @@ public class Main
         }
         else
         {
-            System.out.println(userInput + ": command not found");
+            invalidCommand(userInput);
         }
     }
     private static void exit(int statusCode)
     {
         input.close();
         System.exit(statusCode);
+    }
+    private static void invalidCommand(String userInput)
+    {
+        System.out.println(userInput + ": command not found");
     }
     private static void echo(String userInput)
     {
@@ -44,14 +49,17 @@ public class Main
         }
         else if (userInput.equals("type"))
         {
-            System.out.println("type is a shell builtin");            
+            System.out.println("type is a shell builtin");
+        }
+        else if (userInput.equals("invalid_command"))
+        {
+            invalidCommand(userInput);
         }
         else
         {
-            System.out.println(userInput + ": not found");
+            System.out.println(userInput + " is " + System.getenv("PATH").split(":")[1]);
             return;
         }
-        System.out.println(System.getenv(userInput));
     }
     public static void main(String[] args) throws Exception
     {
