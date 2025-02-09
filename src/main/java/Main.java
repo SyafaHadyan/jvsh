@@ -6,10 +6,14 @@ public class Main
     {
         Scanner input = new Scanner(System.in);
         String userInput = "";
-        while (!(userInput.equals("exit 0")))
+        while (true)
         {
             System.out.print("$ ");
             userInput = input.nextLine();
+            if (userInput.equals("exit 0"))
+            {
+                break;
+            }
             System.out.println(userInput + ": command not found");
         }
         input.close();
