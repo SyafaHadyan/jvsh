@@ -6,7 +6,7 @@ public class Main
     {
         Scanner input = new Scanner(System.in);
         String userInput = "";
-        while (!(userInput.equals("exit")))
+        while (!(userInput.equals("exit 0")))
         {
             System.out.print("$ ");
             userInput = input.nextLine();
