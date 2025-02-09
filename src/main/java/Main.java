@@ -9,6 +9,7 @@ public class Main
         {
             System.out.print("$ ");
             String userInput = input.nextLine();
+            System.out.println(userInput + ": command not found");
         }
         // input.close();
     }
