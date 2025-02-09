@@ -5,13 +5,13 @@ public class Main
     public static void main(String[] args) throws Exception
     {
         Scanner input = new Scanner(System.in);
-        while (true)
+        String userInput = "";
+        while (!(userInput.equals("exit")))
         {
             System.out.print("$ ");
-            String userInput = input.nextLine();
+            userInput = input.nextLine();
             System.out.println(userInput + ": command not found");
-            //
         }
-        // input.close();
+        input.close();
     }
 }
