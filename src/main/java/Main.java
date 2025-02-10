@@ -70,6 +70,15 @@ public class Main
             Path path = Path.of(i, userInput);
             if (Files.isRegularFile(path))
             {
+                try
+                {
+                    Runtime runtime = Runtime.getRuntime();
+                    Process process = runtime.exec(path.toString());
+                }
+                catch (Exception e)
+                {
+                    //
+                }
                 return path.toString();
             }
             if (Files.isExecutable(path))
@@ -83,6 +92,7 @@ public class Main
                 {
                     //
                 }
+                return path.toString();
             }
         }
         return null;
