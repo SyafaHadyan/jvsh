@@ -54,7 +54,6 @@ public class Main
             else
             {
                 System.out.println(userInput + ": not found");
-                System.err.println(path);
             }
             return;
         }
@@ -67,7 +66,6 @@ public class Main
             Path path = Path.of(i, userInput);
             if (Files.isRegularFile(path))
             {
-                System.err.println(i);
                 return path.toString();
             }
         }
