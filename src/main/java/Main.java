@@ -8,6 +8,7 @@ public class Main
     private static void command(String userInput)
     {
         String[] input = userInput.split("\\s+");
+        String execPath = getPath(input[0]);
         if (input[0].equals("exit"))
         {
             exit(Integer.parseInt(input[1]));
@@ -20,7 +21,7 @@ public class Main
         {
             type(userInput.replaceFirst("type ", ""));
         }
-        else if (getPath(input[0]) != null)
+        else if (execPath != null)
         {
             System.out.println("Program was passed " + input.length + " args (including program name).");
         }
@@ -73,7 +74,15 @@ public class Main
             }
             if (Files.isExecutable(path))
             {
-                return path.toString();
+                try
+                {
+                    Runtime runtime = Runtime.getRuntime();
+                    Process process = runtime.exec(userInput);
+                }
+                catch (Exception e)
+                {
+                    //
+                }
             }
         }
         return null;
