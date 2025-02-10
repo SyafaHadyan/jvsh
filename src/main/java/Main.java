@@ -77,7 +77,7 @@ public class Main
                 try
                 {
                     Runtime runtime = Runtime.getRuntime();
-                    Process process = runtime.exec(userInput);
+                    Process process = runtime.exec(path.toString());
                 }
                 catch (Exception e)
                 {
