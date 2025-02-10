@@ -1,4 +1,5 @@
 import java.util.Scanner;
+import java.nio.file.Files;
 import java.nio.file.Path;
 
 public class Main
@@ -39,27 +40,38 @@ public class Main
     }
     private static void type(String userInput)
     {
-        if (userInput.equals("echo"))
+        if (userInput.equals("echo") || userInput.equals("exit") || userInput.equals("type"))
         {
-            System.out.println("echo is a shell builtin");
-        }
-        else if (userInput.equals("exit"))
-        {
-            System.out.println("exit is a shell builtin");
-        }
-        else if (userInput.equals("type"))
-        {
-            System.out.println("type is a shell builtin");
-        }
-        else if (userInput.equals("invalid_command"))
-        {
-            invalidCommand(userInput);
+            System.out.println(userInput + " is a shell builtin");
         }
         else
         {
-            System.out.println(userInput + " is " + System.getenv("PATH").split(":")[1]);
+            String path = getPath(userInput);
+            if (path != null)
+            {
+                System.out.println(userInput + " is " + path);
+            }
+            else
+            {
+                System.out.println(userInput + ": not found");
+                System.err.println(path);
+            }
             return;
         }
+    }
+    private static String getPath(String userInput)
+    {
+        // Path path = Path.of(System.getenv("PATH").split(":")[1], userInput);
+        for (String i : System.getenv("PATH").split(":"))
+        {
+            Path path = Path.of(i, userInput);
+            if (Files.isRegularFile(path))
+            {
+                System.err.println(i);
+                return path.toString();
+            }
+        }
+        return null;
     }
     public static void main(String[] args) throws Exception
     {
