@@ -20,6 +20,10 @@ public class Main
         {
             type(userInput.replaceFirst("type ", ""));
         }
+        else if (getPath(userInput) != null)
+        {
+            System.out.println("Path match");
+        }
         else
         {
             invalidCommand(userInput);
@@ -60,11 +64,14 @@ public class Main
     }
     private static String getPath(String userInput)
     {
-        // Path path = Path.of(System.getenv("PATH").split(":")[1], userInput);
         for (String i : System.getenv("PATH").split(":"))
         {
             Path path = Path.of(i, userInput);
             if (Files.isRegularFile(path))
+            {
+                return path.toString();
+            }
+            if (Files.isExecutable(path))
             {
                 return path.toString();
             }
