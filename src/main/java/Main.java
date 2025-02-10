@@ -22,7 +22,7 @@ public class Main
         }
         else if (getPath(input[0]) != null)
         {
-            System.out.println("Program was passed " + (input.length) + " args (including program name).");
+            System.out.println("Program was passed " + input.length + " args (including program name).");
         }
         else
         {
