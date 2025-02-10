@@ -20,7 +20,7 @@ public class Main
         {
             type(userInput.replaceFirst("type ", ""));
         }
-        else if (getPath(userInput) != null)
+        else if (getPath(input[0]) != null)
         {
             System.out.println("Program was passed " + (input.length - 1) + " args (including program name)");
         }
